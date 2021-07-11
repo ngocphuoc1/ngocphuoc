@@ -45,10 +45,10 @@ namespace BigSchool1.Controllers
         }
         public ActionResult Attending()
         {
-            BigSchoolContext con = new BigSchoolContext();
+            BigSchoolContext context = new BigSchoolContext();
             ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
                 .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var ListAttendances = con.Attendances.Where(p => p.Attendee == currentUser.Id).ToList();
+            var ListAttendances = context.Attendances.Where(p => p.Attendee == currentUser.Id).ToList();
             var courses = new List<Course>();
             foreach (Attendance temp in ListAttendances)
             {
@@ -60,10 +60,10 @@ namespace BigSchool1.Controllers
         }
         public ActionResult Mine()
         {
-            BigSchoolContext con = new BigSchoolContext();
+            BigSchoolContext context = new BigSchoolContext();
             ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
                 .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var courses = con.Courses.Where(c => c.LectureId == currentUser.Id && c.Datetime > DateTime.Now).ToList();
+            var courses = context.Courses.Where(c => c.LectureId == currentUser.Id && c.Datetime > DateTime.Now).ToList();
 
             foreach (Course i in courses)
             {
