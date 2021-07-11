@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<BigSchool1.Models.Course>
 
 @{
-    ViewBag.Title = "Mine";
+    ViewBag.Title = "Attending";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Mine</h2>
+<h2>Attending</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="row">
     <ul class="course">
         @foreach (var course in Model)
@@ -27,16 +24,12 @@
                     <span class="lecture">
                         @course.LectureName
                     </span>
-                    <div>
+                    <br />
                         <span class="category">
                             @course.Category.Name
                         </span>
-                    </div>
-                    <div class="action">
-                        <a href="">Edit</a>
-                        <a href="">Delete</a>
-                    </div>
-                </div>
+                    </div>                                  
             </li>
         }
     </ul>
+</div>

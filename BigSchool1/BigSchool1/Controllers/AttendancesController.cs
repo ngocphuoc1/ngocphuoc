@@ -15,14 +15,14 @@ namespace BigSchool1.Controllers
         public IHttpActionResult Attend(Course attendanceDto)
         {
             var userID = User.Identity.GetUserId();
-            BigSchoolContext con = new BigSchoolContext();
-            if (con.Attendances.Any(p => p.Attendee == userID && p.CourseId == attendanceDto.Id))
+            BigSchoolContext context = new BigSchoolContext();
+            if (context.Attendances.Any(p => p.Attendee == userID && p.CourseId == attendanceDto.Id))
             {
                 return BadRequest("The attendance already exists!");
             }
             var attendance = new Attendance() { CourseId = attendanceDto.Id, Attendee = User.Identity.GetUserId() };
-            con.Attendances.Add(attendance);
-            con.SaveChanges();
+            context.Attendances.Add(attendance);
+            context.SaveChanges();
             return Ok();
         }
     }
