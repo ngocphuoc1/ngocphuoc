@@ -17,11 +17,11 @@ namespace BigSchool1.Models
 
         public int Id { get; set; }
 
-        
+        [Required]
         [StringLength(128)]
         public string LecturerId { get; set; }
 
-        
+        [Required]
         [StringLength(255)]
         public string Place { get; set; }
 
@@ -33,8 +33,13 @@ namespace BigSchool1.Models
         public virtual ICollection<Attendance> Attendances { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public List<Category> ListCategory = new List<Category>();
         public string LectureName;
         public string Name;
-        public List<Category> ListCategory = new List<Category>();
+
+        public bool isLogin = false;
+        public bool isShowGoing = false;
+        public bool isShowFollow = false;
     }
 }
